@@ -35,3 +35,6 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 Route::resource('mipyme',MypimesController::class);
 Route::resource('emprendimiento',EmprendimientoController::class);
+
+Route::post('emprendimiento/{id}/perfil',[LoginController::class,'login'])->name('login.emprendimiento');
+Route::post('mypime/{id}/perfil',[LoginController::class,'login'])->name('login.mypime');

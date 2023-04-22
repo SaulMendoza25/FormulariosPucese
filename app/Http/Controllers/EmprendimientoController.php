@@ -82,7 +82,7 @@ class EmprendimientoController extends Controller
         $emprendimiento = emprendimiento::findOrFail($id);
         return view('emprendimiento.edit', compact('emprendimiento'));
     }
-    public function editUser($email){
+    public function editUser($email,$password){
         $emprendimiento = emprendimiento::findOrFail($email);
         return view('emprendimientoUser', compact('emprendimiento'));
     }

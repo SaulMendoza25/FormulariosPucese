@@ -19,7 +19,8 @@ class CreateEmprendimientosTable extends Migration
             $table->string('name_property')->nullable();
             $table->string('addresses')->nullable();
             $table->integer('phone_number')->nullable();
-            $table->string('email')->nullable();
+            $table->string('email');
+            $table->string('password');
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             //$table->string('require_trainings')->nullable();

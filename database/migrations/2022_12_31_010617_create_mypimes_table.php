@@ -16,14 +16,14 @@ class CreateMypimesTable extends Migration
         Schema::create('mypimes', function (Blueprint $table) {
             $table->id(); //id se genera automaticamente
             //Datos Generales
-            $table->integer('RUC')->unique();
+            $table->integer('RUC')->nullable();
             $table->string('Business_name')->nullable();
             $table->string('Trade_name')->nullable();
             $table->integer('Number_of_collaborators')->nullable();
             $table->string('Formation_of_manager')->nullable();
             $table->string('Address')->nullable();
-            $table->string('email')->nullable();
-
+            $table->string('email');
+            $table->string('password');
             $table->string('Province')->nullable();
             $table->string('County')->nullable();
             $table->string('Parish')->nullable();

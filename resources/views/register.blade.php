@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,16 +8,16 @@
     <title>Register Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
+    </head>
 
 <body>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Register</div>
+                    <div class="card-header">Registro</div>
 
-                    <div class="card-body">
+                     <div class="card-body">
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -25,8 +26,8 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif
-                        <form method="post" action="{{ route('validar-registro') }}">
+                         @endif
+                           <form method="post" action="{{ route('validar-registro') }}" id="form">
                             @csrf
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
@@ -41,11 +42,24 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="registro"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Tipo de registro') }}</label>
+                                <div class="col-md-6">
+                                <select id="tipo_registro" value="hola" name="tipo_registro" class="btn btn-primary">
+                                        <option value="emprendimiento">Emprendimiento</option>
+                                        <option value="mypime">Mypime</option>
+                                    </select>
+                                    <input  class="form-control" id="register" name="register" type="hidden">
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                 <div class="col-md-6">
                                     <input type="password" class="form-control" id="password" name="password">
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <label for="password-confirm"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
@@ -55,14 +69,14 @@
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
+                          
+                                <div class="form-group row mb-0">
+                                <div class="col-md-8 offset-md-4">
+                                    <button id="btn"type="submit" class="btn btn-primary" >
+                                        {{ __('Registrar') }}
                                     </button>
                                 </div>
-                            </div>
+                               </div>
                         </form>
                     </div>
                 </div>
@@ -70,5 +84,8 @@
         </div>
     </div>
 </body>
+<script src="js/validacionRegistro.js"></script>
 
 </html>
+
+

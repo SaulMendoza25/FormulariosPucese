@@ -9,14 +9,50 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
+<style>
+    :root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --very-light-pink: #C7C7C7;
+    --text-input-field: #F7F7F7;
+    --hospital-green: #ACD9B2;
+    --sm: 14px;
+    --md: 16px;
+    --lg: 25px;
+  }
+    .main {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
 
+  }
+
+  .form-container-main {
+    display: grid;
+    width: 1500px;
+    padding: 20px;
+
+  }
+  .second-button {
+      background-color: var(--hospital-green);
+      border-radius: 8px;
+      color: var(--white);
+      display: block;
+      cursor: pointer;
+      font-size: var(--md);
+      font-weight: bold;
+      text-align: center;
+      display: block;
+    }
+</style>
 <body>
     <div class="table">
 
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="row justify-content-center main">
+            <div class="col-md-8 form-container-main" >
                 <div class="card">
-                    <div class="card-header">Login</div>
+                    <div class="card-header">Iniciar Sesion</div>
 
                     <div class="card-body">
 
@@ -45,20 +81,14 @@
                             </div>
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">Login</button>
-                                    <div class="container">
-                                        <br>
-                                        <a href="{{ url('emprendimiento/create') }}"
-                                            class="btn btn-primary mx-3">Registrar Empredimiento</a>
-
-                                        <a href="{{ url('mipyme/create') }}" class="btn btn-primary mx-3">Registar
-                                            Mypime</a>
-                                    </div>
+                              
+                                    <button type="submit" class="btn btn-primary ">Iniciar Sesion</button>    
+                               
+                                    <a href="{{ url('register') }}"
+                                    
+                                            class="btn btn-primary mx-3">Registrarse</a>         
                                 </div>
-
                             </div>
-
-
                         </form>
                     </div>
                 </div>
