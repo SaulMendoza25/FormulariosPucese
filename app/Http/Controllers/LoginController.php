@@ -64,9 +64,9 @@ class LoginController extends Controller
         if(Auth::attempt($credentials,$remember)){
             $request->session()->regenerate();   
               
-            $datos= emprendimiento::select('*')->where('email','=', $request->email)->first();
-            if(!is_null($datos)){
-            return view('emprendimiento.perfil', compact('datos'));
+            $emprendimiento= emprendimiento::select('*')->where('email','=', $request->email)->first();
+            if(!is_null($emprendimiento)){
+            return view('emprendimiento.perfil', compact('emprendimiento'));
             }
             $mypimes= mypimes::select('*')->where('email', '=', $request->email)->first();;
             if(!is_null($mypimes)){

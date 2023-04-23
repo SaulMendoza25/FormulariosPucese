@@ -82,10 +82,7 @@ class EmprendimientoController extends Controller
         $emprendimiento = emprendimiento::findOrFail($id);
         return view('emprendimiento.edit', compact('emprendimiento'));
     }
-    public function editUser($email,$password){
-        $emprendimiento = emprendimiento::findOrFail($email);
-        return view('emprendimientoUser', compact('emprendimiento'));
-    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -120,8 +117,8 @@ class EmprendimientoController extends Controller
             }
         emprendimiento::where('id','=',$id)->update($datosemprendimiento);
         $emprendimiento = emprendimiento::findOrFail($id);
-        redirect('emprendimiento.edit')->with('mensaje','Cambios Realizados Existosamente');
-        return view('emprendimiento.edit', compact('emprendimiento'));
+        redirect('emprendimiento.perfil')->with('mensaje','Cambios Realizados Existosamente');
+        return view('emprendimiento.perfil', compact('emprendimiento'));
     }
 
     /**

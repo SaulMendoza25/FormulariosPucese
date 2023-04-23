@@ -95,7 +95,8 @@ class MypimesController extends Controller
         }
         mypimes::where('id','=',$id)->update($datosmipymes);
         $mypimes = mypimes::findOrFail($id);
-        return view('mipyme.edit', compact('mypimes'));
+        redirect('mipyme.perfil')->with('mensaje','Cambios Realizados Existosamente');
+        return view('mipyme.perfil', compact('mypimes'));
     }
 
     /**

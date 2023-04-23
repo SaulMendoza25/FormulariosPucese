@@ -20,10 +20,10 @@
       <h3 class="title">{{ Session::get('mensaje')}}</h1>
       @endif 
       <h2 class="subtitle">Datos del proyecto emprendimiento</h1>
-        <form class="form-main" action="{{url ('/emprendimiento/'. $datos->id)}}" method="post" enctype="multipart/form-data">
+        <form class="form-main" action="{{url ('/emprendimiento/'. $emprendimiento->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         {{method_field('PATCH') }}
-        @include('emprendimiento.formPerfil',['modo'=>'Editar']);
+        @include('emprendimiento.formPerfil',['modo'=>'Guardar Datos']);
         <form>
     </div>
   </div>
