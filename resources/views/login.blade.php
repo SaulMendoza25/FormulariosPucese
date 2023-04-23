@@ -30,7 +30,7 @@
 
   .form-container-main {
     display: grid;
-    width: 1500px;
+    width: 1000px;
     padding: 20px;
 
   }
@@ -45,12 +45,18 @@
       text-align: center;
       display: block;
     }
+    .logo {
+    width: 250px;
+    margin-bottom: 20px;
+    justify-self: center;
+  }
 </style>
 <body>
-    <div class="table">
+    <div class="container mt-5">
 
-        <div class="row justify-content-center main">
+        <div class="row justify-content-center">
             <div class="col-md-8 form-container-main" >
+            <img src="https://deone.com.ec/wp-content/uploads/2022/07/marca-DeOne.com_.ec_-1-1024x688.png" alt="" class="logo">
                 <div class="card">
                     <div class="card-header">Iniciar Sesion</div>
 

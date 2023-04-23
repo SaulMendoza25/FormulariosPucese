@@ -30,7 +30,7 @@ class LoginController extends Controller
         // request()->except(['_token','name','register','tipo_registro','password_confirmation']);
        if($user->register==="Emprendimiento"){
         emprendimiento::insert($datosemprendimiento);
-       }{
+       }else{
         mypimes::insert($datosemprendimiento);
        }
        return redirect()->intended(route('login'));

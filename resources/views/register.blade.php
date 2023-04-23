@@ -9,11 +9,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
+<style>
+      .main {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
 
+  }
+  .form-container-main {
+    display: grid;
+    width: 1000px;
+    padding: 20px;
+
+  }
+    .logo {
+    width: 250px;
+    margin-bottom: 20px;
+    justify-self: center;
+  }
+</style>
 <body>
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-8 form-container-main">
+            <img src="https://deone.com.ec/wp-content/uploads/2022/07/marca-DeOne.com_.ec_-1-1024x688.png" alt="" class="logo">
                 <div class="card">
                     <div class="card-header">Registro</div>
 
@@ -74,6 +94,9 @@
                                 <div class="col-md-8 offset-md-4">
                                     <button id="btn"type="submit" class="btn btn-primary" >
                                         {{ __('Registrar') }}
+                                    </button>
+                                    <button id="btn"type="button" class="btn btn-primary" >
+                                        {{ __('Iniciar Sesion') }}
                                     </button>
                                 </div>
                                </div>

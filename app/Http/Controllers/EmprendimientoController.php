@@ -96,25 +96,26 @@ class EmprendimientoController extends Controller
         $datosemprendimiento = request()->except(['_token','_method']);
         if ($request->hasFile('upload_proyect')){
             $deleteOldProyect=emprendimiento::findOrFail($id);
-            Storage::delete('public/'.$deleteOldProyect->upload_proyect);
+            Storage::delete('public/storage/'.$deleteOldProyect->upload_proyect);
             $datosemprendimiento['upload_proyect'] = $request->file('upload_proyect')->store('uploads-PDF', 'public');
         }
             
         if ($request->hasFile('up_image_logo')){
             $deleteOldImage=emprendimiento::findOrFail($id);
-            Storage::delete('public/'.$deleteOldImage->up_image_logo);
+            Storage::delete('public/storage/'.$deleteOldImage->up_image_logo);
             $datosemprendimiento['up_image_logo'] = $request->file('up_image_logo')->store('uploads', 'public');
         }
             if ($request->hasFile('up_image_main_products')){
                 $deleteOldImageMainPrododuct=emprendimiento::findOrFail($id);
-                Storage::delete('public/'.$deleteOldImageMainPrododuct->up_image_main_products);
+                Storage::delete('public/storage/'.$deleteOldImageMainPrododuct->up_image_main_products);
                  $datosemprendimiento['up_image_main_products'] = $request->file('up_image_main_products')->store('uploads', 'public');
             }
             if ($request->hasFile('up_image_main_mark')){
                 $deleteOldImageMainMark=emprendimiento::findOrFail($id);
-                Storage::delete('public/'.$deleteOldImageMainMark->up_image_main_mark);
+                Storage::delete('public/storage/'.$deleteOldImageMainMark->up_image_main_mark);
             $datosemprendimiento['up_image_main_mark'] = $request->file('up_image_main_mark')->store('uploads', 'public');
             }
+            
         emprendimiento::where('id','=',$id)->update($datosemprendimiento);
         $emprendimiento = emprendimiento::findOrFail($id);
         redirect('emprendimiento.perfil')->with('mensaje','Cambios Realizados Existosamente');
@@ -130,10 +131,10 @@ class EmprendimientoController extends Controller
     public function destroy($id)
     {
         $emprendimiento = emprendimiento::findOrFail($id);
-        Storage::delete('public/'.$emprendimiento->upload_proyect);
-        Storage::delete('public/'.$emprendimiento->up_image_logo);
-        Storage::delete('public/'.$emprendimiento->up_image_main_products);
-        Storage::delete('public/'.$emprendimiento->up_image_main_mark);
+        Storage::delete('public/storage/'.$emprendimiento->upload_proyect);
+        Storage::delete('public/storage/'.$emprendimiento->up_image_logo);
+        Storage::delete('public/storage/'.$emprendimiento->up_image_main_products);
+        Storage::delete('public/storage/'.$emprendimiento->up_image_main_mark);
         emprendimiento::destroy($id);
                 
         return redirect('emprendimiento');

@@ -148,7 +148,8 @@
             <td>{{$value->theme_require_trainings}}</td>
             <td>{{$value->upload_proyect}}</td>
             <td><img src="{{asset('storage'). '/' . $value->up_image_logo}}" alt=""></td>
-            <td class="actions"> <a class="primary-button" href="{{url('/emprendimiento/' .$value->id. '/edit')}}">Editar</a>  <form action="{{'/emprendimiento/'.$value->id }}" method="post">
+            <td class="actions"> <a class="primary-button" href="{{url('/emprendimiento/' .$value->id. '/edit')}}">Editar</a>  
+            <form action="{{url('/emprendimiento/'.$value->id) }}" method="post">
                     @csrf
                     {{method_field('DELETE') }}
                     <input  class="secundary-button" type="submit" onclick="return confirm('Deseas realmente borrar?')" value="Borrar">

@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/estilo_emprendimiento.css" />
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/estilo_emprendimiento.css') }}" />
   <title>🏆EMPRENDIMIENTO</title>
 </head>
 <body>
@@ -23,7 +23,7 @@
         <form class="form-main" action="{{url ('/emprendimiento/'. $emprendimiento->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         {{method_field('PATCH') }}
-        @include('emprendimiento.formPerfil',['modo'=>'Guardar Datos']);
+        @include('emprendimiento.formPerfil',['modo'=>'Guardar Datos'])
         <form>
     </div>
   </div>
