@@ -50,29 +50,12 @@
                            <form method="post" action="{{ route('validar-registro') }}" id="form">
                             @csrf
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" id="name" name="name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
                                 <div class="col-md-6">
                                     <input type="email" class="form-control" id="email" name="email">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="registro"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Tipo de registro') }}</label>
-                                <div class="col-md-6">
-                                <select id="tipo_registro" value="hola" name="tipo_registro" class="btn btn-primary">
-                                        <option value="emprendimiento">Emprendimiento</option>
-                                        <option value="mypime">Mypime</option>
-                                    </select>
-                                    <input  class="form-control" id="register" name="register" type="hidden">
-                                    
-                                </div>
-                            </div>
+
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                 <div class="col-md-6">
@@ -89,15 +72,25 @@
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
-                          
+                            <div class="form-group row">
+                                <label for="registro"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Tipo de registro') }}</label>
+                                <div class="col-md-6">
+                                <select id="tipo_registro"  name="tipo_registro" class="btn btn-primary">
+                                        <option value="emprendimiento">Emprendimiento</option>
+                                        <option value="mypime">Mypime</option>
+                                    </select>
+                                    <input  class="form-control" id="register" name="register" type="hidden">
+                                    
+                                </div>
+                            </div>
                                 <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button id="btn"type="submit" class="btn btn-primary" >
                                         {{ __('Registrar') }}
                                     </button>
-                                    <button id="btn"type="button" class="btn btn-primary" >
-                                        {{ __('Iniciar Sesion') }}
-                                    </button>
+                                    <a href="{{ url('login') }}"
+                                    class="btn btn-primary mx-3">Iniciar Sesion</a> 
                                 </div>
                                </div>
                         </form>
@@ -107,7 +100,8 @@
         </div>
     </div>
 </body>
-<script src="js/validacionRegistro.js"></script>
+<script src="https://form.deone.com.ec/public/js/validacionRegistro.js"></script>
+
 
 </html>
 

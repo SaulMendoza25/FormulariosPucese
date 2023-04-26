@@ -40,6 +40,36 @@ class EmprendimientoController extends Controller
      */
     public function store(Request $request)
     {
+
+        $campos=[
+            'name_proyect'=>'required|string|max:100',
+            'name_property'=>'required|string|max:150',
+            'addresses'=>'required|string|max:200',
+            'phone_number'=>'required|int|',
+            'start_date'=>'required|date|',
+            'end_date'=>'required|date|',
+            'upload_proyect'=>'required',
+            'main_service'=>'required|string|max:200',
+            'upload_proyect'=>'required|string|mimes:pdf',
+            'main_products'=>'required|string|max:200',
+            'main_investment_source'=>'required|string|max:200',
+            'principal_investment_range'=>'required|int|',
+            'number_employees'=>'required|int|',
+            'up_image_logo'=>'required|string|mimes:jpeg,png,jpg',
+            'up_image_main_products'=>'required|string|mimes:jpeg,png,jpg',
+            'up_image_main_mark'=>'required|string|mimes:jpeg,png,jpg',
+
+        ];
+        $mensaje=[
+              'required'=> 'El :attribute es requerido',
+              'up_image_logo.required'=>'El logo es requerido',
+              'up_image_main_products.required'=>'La imagen del producto es requerido',
+              'up_image_main_mark.required'=>'La imagen de la marca es requerida',
+              'upload_proyect.required'=>'Subir el proyecto es requerido',
+
+             
+        ];
+        $this->validate($request,$campos,$mensaje);
         // $datosemprendimiento = request()->all();
 
         $datosemprendimiento = request()->except('_token');
@@ -79,6 +109,7 @@ class EmprendimientoController extends Controller
      */
     public function edit($id)
     {
+
         $emprendimiento = emprendimiento::findOrFail($id);
         return view('emprendimiento.edit', compact('emprendimiento'));
     }
@@ -92,7 +123,8 @@ class EmprendimientoController extends Controller
      */
     public function update(Request $request, $id)
     {
-      
+
+
         $datosemprendimiento = request()->except(['_token','_method']);
         if ($request->hasFile('upload_proyect')){
             $deleteOldProyect=emprendimiento::findOrFail($id);

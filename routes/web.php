@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MypimesController;
 use App\Http\Controllers\EmprendimientoController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdministerController  ;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,19 +24,18 @@ Route::get('/', function () {
     return view('mipyme.form');
 });*/
 //Route::get('/mipyme/create',[MypimesController::class,'create']);
-Route::view('/login',"login")->name('login')->middleware('auth');
-Route::view('/register',"register")->name('register')->middleware('auth');
-// Route::view('/emprendimientoUser',"emprendimientoUser")->middleware('auth')->name('emprendimientoUser');
-// Route::view('/mypimeUser',"mypimeUser")->middleware('auth')->name('mypimeUser');
+Route::view('/login',"login")->name('login');
+Route::view('/register',"register")->name('register');
+Route::view('/emprendimientoUser',"emprendimientoUser")->middleware('auth')->name('emprendimientoUser');
+Route::view('/mypimeUser',"mypimeUser")->middleware('auth')->name('mypimeUser');
 Route::view('/privada',"secret")->middleware('auth')->name('privada');
-Route::post('/validar-registro',[LoginController::class,'register'])->middleware('auth')->name('validar-registro');
-Route::post('/iniciar-sesion',[LoginController::class,'login'])->middleware('auth')->name('iniciar-sesion');
-Route::get('/logout',[LoginController::class,'logout'])->middleware('auth')->name('logout');
+Route::post('/validar-registro',[LoginController::class,'register'])->name('validar-registro');
+Route::post('/Sesion-Iniciada',[LoginController::class,'login'])->name('iniciar-sesion');
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 
 
-Route::resource('mipyme',MypimesController::class);
-Route::resource('emprendimiento',EmprendimientoController::class);
-
-Route::post('emprendimiento/{id}/perfil',[LoginController::class,'login'])->name('login.emprendimiento');
-Route::post('mypime/{id}/perfil',[LoginController::class,'login'])->name('login.mypime');
+Route::group(['middleware'=>['auth']],function(){
+    Route::resource('mipyme',MypimesController::class);
+    Route::resource('emprendimiento',EmprendimientoController::class);
+});

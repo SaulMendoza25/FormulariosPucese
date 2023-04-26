@@ -19,8 +19,8 @@ class CreateEmprendimientosTable extends Migration
             $table->string('name_property')->nullable();
             $table->string('addresses')->nullable();
             $table->integer('phone_number')->nullable();
-            $table->string('email');
-            $table->string('password');
+            $table->string('email')->nullable();
+            $table->string('password')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             //$table->string('require_trainings')->nullable();
@@ -35,6 +35,7 @@ class CreateEmprendimientosTable extends Migration
             $table->string('up_image_logo')->nullable();
             $table->string('up_image_main_products')->nullable();
             $table->string('up_image_main_mark')->nullable();
+            $table->boolean('tipo_usuario')->default(0);
             $table->timestamps();
         });
     }

@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 class LoginController extends Controller
 {
        /**
@@ -19,7 +20,6 @@ class LoginController extends Controller
     public function register(Request $request){
        // validar los datos
        $user=new User();
-       $user->name=$request->name;
        $user->email=$request->email;
        $user->register=$request->register;
        $user->password=Hash::make($request->password);
@@ -61,10 +61,12 @@ class LoginController extends Controller
             "password"=>$request->password,
         ];
         $remember=($request->has('remember')?true:false);
+    
         if(Auth::attempt($credentials,$remember)){
             $request->session()->regenerate();   
-              
+            
             $emprendimiento= emprendimiento::select('*')->where('email','=', $request->email)->first();
+
             if(!is_null($emprendimiento)){
             return view('emprendimiento.perfil', compact('emprendimiento'));
             }

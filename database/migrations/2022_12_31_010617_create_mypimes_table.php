@@ -16,14 +16,16 @@ class CreateMypimesTable extends Migration
         Schema::create('mypimes', function (Blueprint $table) {
             $table->id(); //id se genera automaticamente
             //Datos Generales
-            $table->integer('RUC')->nullable();
+            $table->string('RUC')->nullable();
             $table->string('Business_name')->nullable();
             $table->string('Trade_name')->nullable();
             $table->integer('Number_of_collaborators')->nullable();
             $table->string('Formation_of_manager')->nullable();
+            $table->string('Name_University')->nullable();
+            $table->string('especialidad')->nullable();
             $table->string('Address')->nullable();
-            $table->string('email');
-            $table->string('password');
+            $table->string('email')->nullable();
+            $table->string('password')->nullable();
             $table->string('Province')->nullable();
             $table->string('County')->nullable();
             $table->string('Parish')->nullable();
@@ -40,6 +42,10 @@ class CreateMypimesTable extends Migration
             $table->string('Products_or_services_details')->nullable();
             $table->string('Fair_trade_products')->nullable();
             $table->string('Foreign_trade')->nullable();
+            $table->string('validacion_de_Paises')->nullable();
+            $table->string('country_importaciones')->nullable();
+            $table->string('country_exportacion')->nullable();
+
             //Localicacion georeferencia
             $table->string('Coordinates')->nullable();//Opcional 
             $table->string('image')->nullable();
@@ -48,6 +54,7 @@ class CreateMypimesTable extends Migration
             $table->string('Requires_training')->nullable();//Opcional 
             $table->string('Web_page')->nullable();//Opcional 
             $table->string('social_media')->nullable();//Opcional 
+            $table->boolean('tipo_usuario')->default(0);
             $table->string('Whatsapp')->nullable();//Opcional 
             //
             //
