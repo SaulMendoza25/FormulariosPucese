@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use App\Models\mypimes;
+use App\Models\emprendimiento;
+use App\Models\User;
 class LoginController extends Controller
 {
     /*
@@ -26,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -36,5 +38,22 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    public function redirectPath(){
+        if(\Auth::user()->hasRole('administrador')){
+            return"admin/emprendimiento";
+        }
+        if(\Auth::user()->hasRole('clienteEmprendimiento')){
+            $user=Auth::user();
+            $emprendimiento= emprendimiento::select('*')->where('email','=', $user->email)->first();
+            return "emprendimiento/$emprendimiento->email/edit";
+        }
+        if(\Auth::user()->hasRole('clienteMypime')){
+            $user=Auth::user();
+            $mypime= mypimes::select('*')->where('email','=', $user->email)->first();
+            return"mipyme/$mypime->email/edit";
+        }
+        return "/";
+        
     }
 }

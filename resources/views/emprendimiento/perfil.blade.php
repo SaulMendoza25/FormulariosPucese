@@ -1,5 +1,15 @@
-
-
+@extends('layouts.app')
+@section('content')
+@if(count($errors)>0)
+<div class="alert alert-danger" role="alert">
+  <ul>
+    @foreach($errors->all() as $error)
+    <li>{{$error}}</li>
+    @endforeach
+  </ul>
+</div>
+@endif
+<div class="container">
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,9 +17,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/estilo_emprendimiento.css')}}" />
 
   <title>🏆EMPRENDIMIENTO</title>
 </head>
@@ -23,7 +30,7 @@
       <h3 class="title">{{ Session::get('mensaje')}}</h1>
       @endif 
       <h2 class="subtitle">Datos del proyecto emprendimiento</h1>
-        <form class="form-main" action="{{url ('/emprendimiento/'. $emprendimiento->id)}}" method="post" enctype="multipart/form-data">
+        <form class="form-main" action="{{url ('emprendimiento/'. $emprendimiento->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         {{method_field('PATCH') }}
         @include('emprendimiento.formPerfil',['modo'=>'Guardar Datos'])
@@ -33,3 +40,5 @@
 </body>
 
 </html>
+</div>
+@endsection

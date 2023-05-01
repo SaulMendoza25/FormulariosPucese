@@ -1,5 +1,4 @@
 
-
 <div class="left">
   <label for="name_proyect">Nombre del proyecto:</label>
   <input type="text" name="name_proyect" class="form-control"  pattern="[a-zA-Z ]{2,999}" id="name_proyect" value="{{isset($emprendimiento->name_proyect)?$emprendimiento->name_proyect:old('name_proyect')}}">
@@ -11,10 +10,20 @@
   @error('name_property')
   <div class=" alert-danger">Los Nombre(s) Propietario(s) es requerido</div>
   @enderror
+  <label for="Number_of_collaborators">Correo Electronico:</label>
+  <input type="string" name="email" class="form-control" id="email"  title="Ingrese datos validos en el campo"  value="{{isset($emprendimiento->email)?$emprendimiento->email:old('email')}}">
+  @error('email')
+  <div class=" alert-danger">del Correo Electronico social es requerido</div>
+  @enderror
+  <label for="Number_of_collaborators">Contraseña:</label>
+  <input type="string" name="password" class="form-control" id="password" title="Ingrese datos validos en el campo"  value="{{isset($emprendimiento->password)?$emprendimiento->password:old('password')}}">
+  @error('password')
+  <div class=" alert-danger">La Contraseña es requerida</div>
+  @enderror
   <label for="addresses">Direccion:</label>
   <input type="text" name="addresses" class="form-control"  pattern="[a-zA-Z1-9 ]{2,999}" id="addresses" value="{{isset($emprendimiento->addresses)?$emprendimiento->addresses:old('addresses')}}">
   @error('addresses')
-  <div class=" alert-danger">El nombre de Direccion es requerida</div>
+  <div class=" alert-danger">El nombre de Direccion es requerido</div>
   @enderror
   <label for="phone_number">Telefono:</label>
   <input type="text" NAME="phone_number" class="form-control" pattern="[0-9]{1,13}" id="phone_number" value="{{isset($emprendimiento->phone_number)?$emprendimiento->phone_number:old('phone_number')}}">
@@ -97,6 +106,7 @@
 </div>
   <div class="buttons">
   <input id="save" class="second-button" type="submit" value="{{$modo}}">
+  <a href="{{ url('login') }}" class="second-button">cerrar sesion</a>
   </div>
 </div>
 <script src="https://form.deone.com.ec/public/js/validacionEmprendimiento.js"></script>

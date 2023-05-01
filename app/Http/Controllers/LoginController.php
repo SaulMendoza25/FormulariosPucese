@@ -25,7 +25,7 @@ class LoginController extends Controller
        $user->password=Hash::make($request->password);
        $user->save();
        Auth::login($user);
-
+    
        $datosemprendimiento= array("email"=> $user->email, "password"=> $user->password);
         // request()->except(['_token','name','register','tipo_registro','password_confirmation']);
        if($user->register==="Emprendimiento"){

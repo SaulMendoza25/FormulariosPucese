@@ -24,7 +24,8 @@ class User extends Authenticatable
         'email',
         'register',
         'password',
-        'tipo_usuario'
+        'tipo_usuario',//tipo 0 administrador, 1= emprendedor, 2  negocioMypime
+        'estado' //activado=1, no activado =0
     ];
 
     /**

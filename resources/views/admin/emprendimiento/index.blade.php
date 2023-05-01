@@ -1,22 +1,22 @@
+@extends('layouts.app')
 
+@section('content')
+<div class="container">
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 🏆 Datos de los Emprendimiento</title>
-    <link rel="stylesheet" href="{{ URL::asset('/css/estilo_tables.css') }}">
 </head>
 
-<body>
+<body class="body-tables">
 
-<div class="button">  
-<a href="{{url('emprendimiento/create')}}" class="primary-button calseta" value="">Nuevo Formulario</a>
-<a href="{{url('mipyme')}}" class="primary-button calseta" value="" >Tabla de Mypimes</a>
-<a href="{{route('logout')}}" class="primary-button calseta" type="button" value="" >Cerrar Sesion</a>
+<div class="session">  
+<a href="{{url('admin/emprendimiento/create')}}" class="enlaces">Nuevo Formulario</a>
+<a href="{{url('admin/mypime')}}" class="enlaces"  >Tabla de Mypimes</a>
 </div>  
-<table class=" container">
+<table class="tables styled-table">
     <thead >
         <tr>
             <th><h1>#</th>
@@ -32,20 +32,7 @@
             <th><h1>Rango de Inversion Principal</h1></th>
             <th><h1>Acciones</h1></th>
         </tr>
-        <tr>
-                <th></th>
-                <th>Filter..</th>
-                <th>Filter..</th>
-                <th>Filter..</th>
-                <th>Filter..</th>
-                <th>Filter..</th>
-                <th>Filter..</th>
-                <th></th>
-                <th>Filter..</th>
-                <th>Filter..</th>
-                <th>Filter..</th>
-           
-            </tr>
+
     </thead>
 
     <tbody>
@@ -62,7 +49,7 @@
             <td>{{$value->main_service}}</td>
             <td>{{$value->main_investment_source}}</td>
             <td>{{$value->principal_investment_range}}</td>
-            <td class="actions"> <a class="primary-button" href="{{url('/emprendimiento/' .$value->id. '/edit')}}">Editar</a>  
+            <td class="actions"> <a class="other-button" href="{{url('admin/emprendimiento/' .$value->id. '/edit')}}">Editar</a>  
             <form action="{{url('/emprendimiento/'.$value->id) }}" method="post">
                     @csrf
                     {{method_field('DELETE') }}
@@ -75,3 +62,5 @@
 </table>
 </body>
 </html>
+</div>
+@endsection

@@ -30,7 +30,7 @@
 </div>
 @endif
       <h2 class="subtitle">Datos Generales</h1>
-        <form class="form-main" action="{{url('mypime/'. $mypimes->id)}}" method="post" enctype="multipart/form-data">
+        <form class="form-main" action="{{url('admin/mypime/'. $mypimes->id)}}" method="post" enctype="multipart/form-data">
           @csrf
           {{method_field('PATCH') }}
           @include('admin.mypime.formPerfil')

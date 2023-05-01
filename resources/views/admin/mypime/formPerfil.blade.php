@@ -4,12 +4,12 @@
   <input type="text" name="RUC" class="form-control" id="RUC"  title="Ingrese datos validos en el campo" value="{{isset($mypimes->RUC)?$mypimes->RUC:old('RUC')}}" >
 
   <label for="Business_name">Razon Social:</label>
-  <input type="text" name="Business_name" class="form-control"  pattern="[a-zA-Z ]{2,999}" title="Ingrese datos validos en el campo" id="Business_name" value="{{isset($mypimes->Business_name)?$mypimes->Business_name:old('Business_name')}}">
+  <input type="text" name="Business_name" class="form-control"   title="Ingrese datos validos en el campo" id="Business_name" value="{{isset($mypimes->Business_name)?$mypimes->Business_name:old('Business_name')}}">
   @error('Business_name')
   <div class=" alert-danger">El nombre de la razon social es requerido</div>
   @enderror
   <label for="Trade_name">Nombre Comercial:</label>
-  <input type="text" name="Trade_name" class="form-control" pattern="[a-zA-Z ]{2,999}" title="Ingrese datos validos en el campo" id="Trade_name" value="{{isset($mypimes->Trade_name)?$mypimes->Trade_name:old('Trade_name')}}">
+  <input type="text" name="Trade_name" class="form-control"  title="Ingrese datos validos en el campo" id="Trade_name" value="{{isset($mypimes->Trade_name)?$mypimes->Trade_name:old('Trade_name')}}">
   @error('Trade_name')
   <div class=" alert-danger">El nombre comercial es requerido</div>
   @enderror
@@ -18,7 +18,16 @@
   @error('Number_of_collaborators')
   <div class=" alert-danger">El numero de colaboradores es requerido</div>
   @enderror
-  
+  <label for="email">Correo Electronico:</label>
+  <input type="string" name="email" class="form-control" id="email"  title="Ingrese datos validos en el campo"  value="{{isset($mypimes->email)?$mypimes->email:old('email')}}">
+  @error('email')
+  <div class=" alert-danger">El correo electronico es requerido</div>
+  @enderror
+ <label for="contraseña">contraseña:</label>
+  <input type="string" name="password" class="form-control" id="password" title="Ingrese datos validos en el campo"  value="{{isset($mypimes->password)?$mypimes->password:old('password')}}">
+  @error('password')
+  <div class=" alert-danger">La contraseña es requerido</div>
+  @enderror
   <label for="Formation_of_manager">Formación del gerente o administrador:</label>
   <select class="combo"  id="textMypimes">
   <option value="{{isset($mypimes->Formation_of_manager)?$mypimes->Formation_of_manager:old('Formation_of_manager')}}" selected disabled hidden>{{isset($mypimes->Formation_of_manager)?$mypimes->Formation_of_manager:old('Formation_of_manager')}}</option>
@@ -171,6 +180,7 @@
   <input placeholder="Escriba la dirección"  type="text" name="Whatsapp" class="form-control" id="Whatsapp" value="{{isset($mypimes->Whatsapp)?$mypimes->Whatsapp:old('Whatsapp')}}">
   <div class="buttons">
   <input class="second-button" id="save" type="submit" value="Guardar Datos">
+  <a href="{{ url('admin/mypime') }}"  class="second-button">Volver</a>
   </div>
   
 </div>

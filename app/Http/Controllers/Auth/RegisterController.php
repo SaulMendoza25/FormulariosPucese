@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
+use Auth;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\mypimes;
+use App\Models\emprendimiento;
 
 class RegisterController extends Controller
 {
@@ -52,9 +54,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'register' => ['required', 'string', 'max:100'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            
         ]);
     }
 
@@ -66,13 +66,39 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'type_register' => $data['register'],
-           
+            'tipo_usuario' => $data['tipo_usuario'],
+
             'password' => Hash::make($data['password']),
-         
         ]);
+        $datosemprendimiento = array("email"=>$user->email);
+        if($user->tipo_usuario=="ya no existe"){
+        // $user->assignRole("administrador");
+        return $user;
+    }  else if($user->tipo_usuario==1){
+        emprendimiento::insert($datosemprendimiento);
+        $user->assignRole("clienteEmprendimiento");
+        return $user;
+        }else{
+        mypimes::insert($datosemprendimiento);
+        $user->assignRole("clienteMypime");
+        return $user;
+        }
+        
     }
+    protected function redirectTo(){
+        if(\Auth::user()->hasRole('administrador')){
+            return"admin/emprendimiento";
+        }
+        if(\Auth::user()->hasRole('clienteEmprendimiento')){
+            return"login";
+        }
+        if(\Auth::user()->hasRole('clienteMypime')){
+            return"login";
+        }
+        
+    
+}
 }

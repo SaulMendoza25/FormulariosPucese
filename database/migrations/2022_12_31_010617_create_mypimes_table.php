@@ -47,7 +47,9 @@ class CreateMypimesTable extends Migration
             $table->string('country_exportacion')->nullable();
 
             //Localicacion georeferencia
-            $table->string('Coordinates')->nullable();//Opcional 
+            $table->string('Coordinatesx')->nullable();//Opcional 
+            $table->string('Coordinatesy')->nullable();//Opcional 
+
             $table->string('image')->nullable();
             //Informcaion Tecnologica
             $table->string('E_commerce')->nullable();//Opcional 
