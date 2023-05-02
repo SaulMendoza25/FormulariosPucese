@@ -11,12 +11,12 @@
   <div class=" alert-danger">Los Nombre(s) Propietario(s) es requerido</div>
   @enderror
   <label for="Number_of_collaborators">Correo Electronico:</label>
-  <input type="string" name="email" class="form-control" id="email"  title="Ingrese datos validos en el campo"  value="{{isset($emprendimiento->email)?$emprendimiento->email:old('email')}}">
+  <input type="email" name="email" class="form-control" id="email"  title="Ingrese datos validos en el campo"  value="{{isset($emprendimiento->email)?$emprendimiento->email:old('email')}}" pattern=".+@globex\.com" size="30" required>
   @error('email')
-  <div class=" alert-danger">del Correo Electronico social es requerido</div>
+  <div class=" alert-danger">El Correo Electronico social es requerido</div>
   @enderror
   <label for="Number_of_collaborators">Contraseña:</label>
-  <input type="string" name="password" class="form-control" id="password" title="Ingrese datos validos en el campo"  value="{{isset($emprendimiento->password)?$emprendimiento->password:old('password')}}">
+  <input type="password" name="password" class="form-control" id="password" title="Ingrese datos validos en el campo"  value="{{isset($emprendimiento->password)?$emprendimiento->password:old('password')}}">
   @error('password')
   <div class=" alert-danger">La Contraseña es requerida</div>
   @enderror
@@ -66,8 +66,10 @@
     @error('main_products')
   <div class=" alert-danger">El detalle de los Productos Principales son requeridos</div>
   @enderror
-    <br>
-    <input type="file" name="up_image_main_products" accept="image/png, image/jpeg image/JPG" class="form-file" id="up_image_main_products" value="{{isset($emprendimiento->up_image_main_products)?$emprendimiento->number_employees:old('up_image_main_products')}}">
+  <br>
+  <label for="main_products">Subir una imagen de los productos principales:</label>
+  <br>
+  <input type="file" name="up_image_main_products" accept="image/png, image/jpeg image/JPG" class="form-file" id="up_image_main_products" value="{{isset($emprendimiento->up_image_main_products)?$emprendimiento->number_employees:old('up_image_main_products')}}">
     @error('up_image_main_products')
   <div class=" alert-danger">La imagen de los productos son requeridos</div>
   @enderror
@@ -106,7 +108,7 @@
 </div>
   <div class="buttons">
   <input id="save" class="second-button" type="submit" value="{{$modo}}">
-  <a href="{{ url('login') }}" class="second-button">cerrar sesion</a>
+  <a href="{{ url('admin/emprendimiento') }}" class="second-button">Volver</a>
   </div>
 </div>
 <script src="https://form.deone.com.ec/public/js/validacionEmprendimiento.js"></script>

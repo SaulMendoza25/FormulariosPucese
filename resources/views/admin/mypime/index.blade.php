@@ -6,16 +6,17 @@
 
     
 
-
+<title>Reportes</title>
 <body class="body-tables">
-<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 🏆 Datos de los Emprendimiento</title>
+    
 <div class="session">  
 <a href="{{url('admin/mypime/create')}}" class="enlaces" >Nuevo Formulario</a>
 <a href="{{url('admin/emprendimiento')}}" class="enlaces"  >Tabla de Emprendimientos</a>
+<div class="direcciones">
+    {!!$mypime->links()!!}
+</div>
 </div>  
+
 <table class="tables styled-table">
     <thead >
         <tr>
@@ -59,6 +60,8 @@
         @endforeach
     </tbody>
 </table>
+
+
 </body>
 </div>
 @endsection

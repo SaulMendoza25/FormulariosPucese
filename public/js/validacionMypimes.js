@@ -25,8 +25,9 @@ const submtCountry4= document.querySelector("#countrys4");
 const importaciones= document.querySelector("#importaciones");
 const exportaciones= document.querySelector("#exportacion");
 const validacion_paises=document.querySelector("#validacion_de_Paises");
-//validaciones 
-
+//validacion de servicios y porductos 
+const selectServicios=document.querySelector("#Products_or_services");
+const selectServiciosHidden=document.querySelector("#Products_or_services_details");
 
 
 guardar.addEventListener('click',save);
@@ -49,7 +50,7 @@ function countrys(){
 }
 
 
-
+console.log(selectServiciosHidden.value);
 function save(){
 
    validacion_paises.value=textPaises.value;
@@ -59,6 +60,8 @@ function save(){
    subtmitComercio.value=textComercio.value;
    importaciones.value=submtCountry2.value;
    exportaciones.value=submtCountry4.value;
+   selectServiciosHidden.value=selectServicios.value;
+  
 }
 function cambiar(){
     if(textMypimes.value=="Estudiante Universitario"){

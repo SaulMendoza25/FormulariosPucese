@@ -58,6 +58,8 @@
   <div class=" alert-danger">El detalle de los Productos Principales son requeridos</div>
   @enderror
     <br>
+    <label for="main_products">Subir una imagen de los productos principales:</label>
+    <br>
     <input type="file" name="up_image_main_products" accept="image/png, image/jpeg image/JPG" class="form-file" id="up_image_main_products" value="{{isset($emprendimiento->up_image_main_products)?$emprendimiento->number_employees:old('up_image_main_products')}}">
     @error('up_image_main_products')
   <div class=" alert-danger">La imagen de los productos son requeridos</div>

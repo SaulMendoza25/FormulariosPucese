@@ -59,7 +59,7 @@
   @error('Parish')
   <div class=" alert-danger">La Parroquia es requerida</div>
   @enderror
-  <label for="Contact_telephone_number">Telefono de contactos:</label>
+  <label for="Contact_telephone_number">Telefono de contacto:</label>
   <input type="text" name="Contact_telephone_number" class="form-control" id="Contact_telephone_number" value="{{isset($mypimes->Contact_telephone_number)?$mypimes->Contact_telephone_number:old('Contact_telephone_number')}}"   pattern="[0-9]{10}"  title="El numero telefonico debe ser de 10 digitos" >
   @error('Contact_telephone_number')
   <div class=" alert-danger">El telefono de contacto es requerido</div>
@@ -110,8 +110,9 @@
 </div>
 
 <div class="right">
-  <label class="Products_or_services_details" for="Products_or_services_details">Productos o servicios:</label>
-  <input type="text" name="Products_or_services_details" class="form-control" id="Products_or_services_details" value="{{isset($mypimes->Products_or_services_details)?$mypimes->Products_or_services_details:old('Products_or_services_details')}}"   pattern="[a-zA-Z ]{2,999}" title="Ingrese datos validos en el campo">
+  <label class="Products_or_services_details" for="Products_or_services">Productos o servicios:</label>
+  <textarea id="Products_or_services"  class="comment"  placeholder="Ingrese los serivios o productos">{{isset($mypimes->Products_or_services_details)?$mypimes->Products_or_services_details:old('Products_or_services_details')}}</textarea>
+  <input type="hidden" name="Products_or_services_details" class="form-control" id="Products_or_services_details">
   @error('Products_or_services_details')
   <div class=" alert-danger">Los productos o servivicios son requeridos</div>
   @enderror

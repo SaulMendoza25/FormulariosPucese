@@ -16,7 +16,7 @@ class adminMypimeController extends Controller
      */
     public function index()
     {
-        $datos['mypime'] = mypimes::paginate(10);
+        $datos['mypime'] = mypimes::paginate(5);
         return view('admin/mypime.index', $datos);
     }
 
@@ -218,6 +218,8 @@ class adminMypimeController extends Controller
         Storage::delete('public/'.$mypimes->up_image_logo);
         Storage::delete('public/'.$mypimes->image);
         mypimes::destroy($id);
+        $usuario= user::select('*')->where('email','=', $mypimes->email)->first();
+        user::destroy($usuario->id);
         return redirect('admin/mypime');
     }
 }

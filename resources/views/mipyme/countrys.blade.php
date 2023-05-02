@@ -1,6 +1,6 @@
 <label Style="display:none" id="countrys1" for="Paises de Origen">Ingrese el paises de origen de las Importaciones:</label>
 <select class="combo"  id="countrys2" Style="display:none">
-		<option value="{{isset($mypimes->country_importaciones)?$mypimes->country_importaciones:''}}" selected disabled hidden>{{isset($mypimes->country_importaciones)?$mypimes->country_importaciones:''}}</option>
+		<option value="{{isset($mypimes->country_importaciones)?$mypimes->country_importaciones:old('country_importaciones')}}" selected disabled hidden>{{isset($mypimes->country_importaciones)?$mypimes->country_importaciones:''}}</option>
         <option value="Afganistán">Afganistán</option>
 		<option value="Albania">Albania</option>
 		<option value="Alemania">Alemania</option>
@@ -199,7 +199,7 @@
 <input type="hidden"  id="importaciones" name="country_importaciones">
 <label Style="display:none" id="countrys3" for="Exportaciones Paises de Destino">Ingrese el paises de origen de las Exportaciones:</label>
   <select Style="display:none" class="combo"  id="countrys4">
-	    <option value="{{isset($mypimes->country_exportacion)?$mypimes->country_exportacion:''}}" selected disabled hidden>{{isset($mypimes->country_exportacion)?$mypimes->country_exportacion:''}}</option>
+	    <option value="{{isset($mypimes->country_exportacion)?$mypimes->country_exportacion:old('country_importaciones')}}" selected disabled hidden>{{isset($mypimes->country_exportacion)?$mypimes->country_exportacion:''}}</option>
         <option value="Afganistán">Afganistán</option>
 		<option value="Albania">Albania</option>
 		<option value="Alemania">Alemania</option>

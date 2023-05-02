@@ -19,12 +19,12 @@
   <div class=" alert-danger">El numero de colaboradores es requerido</div>
   @enderror
   <label for="email">Correo Electronico:</label>
-  <input type="string" name="email" class="form-control" id="email"  title="Ingrese datos validos en el campo"  value="{{isset($mypimes->email)?$mypimes->email:old('email')}}">
+  <input type="email" name="email" class="form-control" id="email"  title="Ingrese datos validos en el campo"  value="{{isset($mypimes->email)?$mypimes->email:old('email')}}" pattern=".+@globex\.com" size="30" required>
   @error('email')
   <div class=" alert-danger">El correo electronico es requerido</div>
   @enderror
  <label for="contraseña">contraseña:</label>
-  <input type="string" name="password" class="form-control" id="password" title="Ingrese datos validos en el campo"  value="{{isset($mypimes->password)?$mypimes->password:old('password')}}">
+  <input type="password" name="password" class="form-control" id="password" title="Ingrese datos validos en el campo"  value="{{isset($mypimes->password)?$mypimes->password:old('password')}}">
   @error('password')
   <div class=" alert-danger">La contraseña es requerido</div>
   @enderror
@@ -119,11 +119,16 @@
 </div>
 
 <div class="right">
-  <label class="Products_or_services_details" for="Products_or_services_details">Productos o servicios:</label>
-  <input type="text" name="Products_or_services_details" class="form-control" id="Products_or_services_details" value="{{isset($mypimes->Products_or_services_details)?$mypimes->Products_or_services_details:old('Products_or_services_details')}}"   pattern="[a-zA-Z ]{2,999}" title="Ingrese datos validos en el campo">
+
+  <label class="Products_or_services_details" for="Products_or_services">Productos o servicios:</label>
+  <textarea id="Products_or_services"  class="comment"  placeholder="Ingrese los temas">{{isset($mypimes->Products_or_services_details)?$mypimes->Products_or_services_details:old('Products_or_services_details')}}</textarea>
+  <input type="hidden" name="Products_or_services_details" class="form-control" id="Products_or_services_details">
   @error('Products_or_services_details')
   <div class=" alert-danger">Los productos o servivicios son requeridos</div>
   @enderror
+
+
+
   <label for="Fair_trade_products">(opcional) Producto de comercio justo:</label>
   <select class="combo"   id="text_Fair_trade_products" value="{{isset($mypimes->Fair_trade_products)?$mypimes->Fair_trade_products:old('Fair_trade_products')}}">
     <option value="SI">SI</option>

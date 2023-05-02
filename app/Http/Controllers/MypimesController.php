@@ -9,6 +9,21 @@ use Auth;
 
 class MypimesController extends Controller
 {
+
+        /**
+     * Display the specified resource.
+     *
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $user=Auth::user();
+        $mypimes= mypimes::select('*')->where('email','=', $user->email)->first();
+      //  $emprendimiento = emprendimiento::findOrFail($id);
+        return view('mipyme.perfil', compact('mypimes'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -25,14 +25,17 @@ Route::get('/', function () {
 // Route::post('/Sesion-Iniciada',[LoginController::class,'login'])->name('iniciar-sesion');
 // Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
+Route::get('logout', function() {
+    Auth::logout();
 
+    return redirect('/');
+});
 
 Auth::routes();
 Route::group(['middleware'=>['auth','role:administrador']],
 function(){
-    Route::resource('emprendimiento',EmprendimientoController::class);
-    Route::resource('mipyme',MypimesController::class);
 
+    
  Route::resource('admin/emprendimiento',adminEmprendimientoControlle::class);
 Route::resource('admin/mypime',adminMypimeController::class);
 
@@ -50,4 +53,4 @@ function(){
     Route::resource('mipyme',MypimesController::class);
    
 });
-Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'redirectPath']);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

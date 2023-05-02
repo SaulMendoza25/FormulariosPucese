@@ -110,7 +110,7 @@ class adminEmprendimientoControlle extends Controller
         $user->assignRole("clienteEmprendimiento");
         $user->save();
 
-        return redirect('admin.emprendimiento')->with('mensaje','Emprendedor Agregado con exito🏆');
+        return redirect('admin/emprendimiento')->with('mensaje','Emprendedor Agregado con exito🏆');
     }
 
     /**
@@ -231,8 +231,10 @@ class adminEmprendimientoControlle extends Controller
         Storage::delete('public/storage/'.$emprendimiento->up_image_logo);
         Storage::delete('public/storage/'.$emprendimiento->up_image_main_products);
         Storage::delete('public/storage/'.$emprendimiento->up_image_main_mark);
+        $usuario= user::select('*')->where('email','=', $emprendimiento->email)->first();
+        user::destroy($usuario->id);
         emprendimiento::destroy($id);
                 
-        return redirect('admin.emprendimiento');
+        return redirect('admin/emprendimiento');
     }
 }

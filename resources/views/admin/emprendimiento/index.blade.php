@@ -15,6 +15,9 @@
 <div class="session">  
 <a href="{{url('admin/emprendimiento/create')}}" class="enlaces">Nuevo Formulario</a>
 <a href="{{url('admin/mypime')}}" class="enlaces"  >Tabla de Mypimes</a>
+<div class="direcciones">
+    {!!$emprendimiento->links()!!}
+</div>
 </div>  
 <table class="tables styled-table">
     <thead >
@@ -50,7 +53,7 @@
             <td>{{$value->main_investment_source}}</td>
             <td>{{$value->principal_investment_range}}</td>
             <td class="actions"> <a class="other-button" href="{{url('admin/emprendimiento/' .$value->id. '/edit')}}">Editar</a>  
-            <form action="{{url('/emprendimiento/'.$value->id) }}" method="post">
+            <form action="{{url('admin/'.'emprendimiento/'.$value->id) }}" method="post">
                     @csrf
                     {{method_field('DELETE') }}
                     <input  class="secundary-button" type="submit" onclick="return confirm('Deseas realmente borrar?')" value="Borrar">
@@ -60,6 +63,7 @@
         @endforeach
     </tbody>
 </table>
+
 </body>
 </html>
 </div>
