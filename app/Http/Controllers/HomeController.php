@@ -33,7 +33,7 @@ class HomeController extends Controller
     {
         // return view('home');
         if(\Auth::user()->hasRole('administrador')){
-            return redirect('admin/emprendimiento');
+            return redirect('admin/emprendimientos');
         }
         if(\Auth::user()->hasRole('clienteEmprendimiento')){
             $user=Auth::user();

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\mypimes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+
 class adminMypimeController extends Controller
 {
     /**
@@ -14,10 +16,22 @@ class adminMypimeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $datos['mypime'] = mypimes::paginate(5);
-        return view('admin/mypime.index', $datos);
+        $texto=trim($request->get('texto'));
+        // $datos['mypime'] = mypimes::paginate(5);
+        $datos=DB::table('mypimes')
+        ->select('*')->where('email','LIKE', '%' . $texto . '%')
+        ->orWhere('RUC','LIKE', '%' . $texto . '%')
+        ->orWhere('Business_name','LIKE', '%' . $texto . '%')
+        ->orWhere('Category','LIKE', '%' . $texto . '%')
+        ->orWhere('Products_or_services_details','LIKE', '%' . $texto . '%')
+        ->orWhere('Address','LIKE', '%' . $texto . '%')
+        ->orWhere('social_media','LIKE', '%' . $texto . '%')
+        ->orWhere('Contact_telephone_number','LIKE', '%' . $texto . '%')
+        ->orWhere('Trade_name','LIKE', '%' . $texto . '%')
+        ->paginate(5);
+        return view('admin/mypime.index',  compact('datos'));
     }
 
     /**
@@ -51,7 +65,7 @@ class adminMypimeController extends Controller
             'Province'=>'required|string',
             'County'=>'required|string',
             'Parish'=>'required|string',
-            'Contact_telephone_number'=>'required',
+            'Contact_telephone_number'=>'required|string',
             'Owner_Legal_representative'=>'required|string',
             'Gender_Representative'=>'required',
             'Number_of_establishments'=>'required|int',
@@ -138,8 +152,7 @@ class adminMypimeController extends Controller
             'Business_name'=>'required|string',
             'Trade_name'=>'required|string',
             'Number_of_collaborators'=>'required|int',
-            'email'=>'required',
-            'password'=>'required',
+
             'Formation_of_manager'=>'required|string',
             'Address'=>'required|string',
             'Province'=>'required|string',
@@ -153,9 +166,8 @@ class adminMypimeController extends Controller
             'Category'=>'required|string',
             'Products_or_services_details'=>'required|string',
 
-            'Coordinates_x'=>'required',
-            'Coordinates_y'=>'required',
-            'image'=>'required',
+            'Coordinatesx'=>'required',
+            'Coordinatesy'=>'required',
 
 
             

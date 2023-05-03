@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 class adminEmprendimientoControlle extends Controller
 {
     /**
@@ -15,10 +17,20 @@ class adminEmprendimientoControlle extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $datos['emprendimiento'] = emprendimiento::paginate(5);
-        return view('admin.emprendimiento.index', $datos);
+        $texto=trim($request->get('texto'));
+        // $datos['mypime'] = mypimes::paginate(5);
+        $datos=DB::table('emprendimientos')
+        ->select('*')->where('email','LIKE', '%' . $texto . '%')
+        ->orWhere('name_proyect','LIKE', '%' . $texto . '%')
+        ->orWhere('addresses','LIKE', '%' . $texto . '%')
+        ->orWhere('phone_number','LIKE', '%' . $texto . '%')
+        ->orWhere('main_products','LIKE', '%' . $texto . '%')
+        ->orWhere('main_service','LIKE', '%' . $texto . '%')
+        ->paginate(5);
+        return view('admin/emprendimientos.index',  compact('datos'));
+
     }
 
     /**
@@ -29,7 +41,7 @@ class adminEmprendimientoControlle extends Controller
 
     public function create()
     {
-        return view('admin.emprendimiento.create');
+        return view('admin.emprendimientos.create');
     }
 
     /**
@@ -41,21 +53,20 @@ class adminEmprendimientoControlle extends Controller
     public function store(Request $request)
     {
         $campos=[
-            'name_proyect'=>'required|string|max:100',
-            'name_property'=>'required|string|max:150',
-            'addresses'=>'required|string|max:200',
-            'phone_number'=>'required',
+            'name_proyect'=>'required|string',
+            'name_property'=>'required|string',
+            'addresses'=>'required|string',
+            'phone_number'=>'required|string',
             'email'=>'required',
             'password'=>'required',
             'start_date'=>'required',
             'end_date'=>'required',
-            'main_service'=>'required|string|max:200',
+            'main_service'=>'required|string',
             'upload_proyect'=>'required',
-            'main_products'=>'required|string|max:200',
-            'main_investment_source'=>'required|string|max:200',
+            'main_products'=>'required|string',
+            'main_investment_source'=>'required|string',
             'principal_investment_range'=>'required|int|',
             'number_employees'=>'required|int|',
-            'up_image_logo'=>'required',
             'up_image_main_products'=>'required',
             'up_image_main_mark'=>'required',
 
@@ -110,7 +121,7 @@ class adminEmprendimientoControlle extends Controller
         $user->assignRole("clienteEmprendimiento");
         $user->save();
 
-        return redirect('admin/emprendimiento')->with('mensaje','Emprendedor Agregado con exito🏆');
+        return redirect('admin/emprendimientos')->with('mensaje','Emprendedor Agregado con exito🏆');
     }
 
     /**
@@ -133,7 +144,7 @@ class adminEmprendimientoControlle extends Controller
     public function edit($id)
     {
        $emprendimiento = emprendimiento::findOrFail($id);
-        return view('admin/emprendimiento/perfil', compact('emprendimiento'));
+        return view('admin/emprendimientos/perfil', compact('emprendimiento'));
     }
 
     /**
@@ -154,13 +165,12 @@ class adminEmprendimientoControlle extends Controller
             'password'=>'required',
             'start_date'=>'required',
             'end_date'=>'required',
-            'main_service'=>'required|string|max:200',
+            'main_service'=>'required|string|max:220',
         
             'main_products'=>'required|string|max:200',
             'main_investment_source'=>'required|string|max:200',
             'principal_investment_range'=>'required|int|',
             'number_employees'=>'required|int|',
-            'up_image_logo'=>'required',
           
           
         ];
@@ -173,7 +183,7 @@ class adminEmprendimientoControlle extends Controller
               'password'=>'La clave es requerido',
               'start_date.required'=>'La fecha de Inicio es requerido',
               'end_date.required'=>'La fecha final es requerida',
-              'main_service.required'=>'El servicio principal es requerido',
+              'main_service.required'=>'El servicio principal es requerido el limite es de 200 caracteres',
               'main_products.required'=>'principales productos',
               'main_investment_source.required'=>'La fuente de inversion principales es requerida',
               'principal_investment_range.required'=>'El rango principal de investigacion es requerido',
@@ -215,7 +225,7 @@ class adminEmprendimientoControlle extends Controller
         $emprendimiento = emprendimiento::findOrFail($id);
          
         redirect('admin/emprendimiento/perfil')->with('mensaje','Cambios Realizados Existosamente');
-        return view('admin/emprendimiento/perfil', compact('emprendimiento'));
+        return view('admin/emprendimientos/perfil', compact('emprendimiento'));
     }
 
     /**
@@ -235,6 +245,6 @@ class adminEmprendimientoControlle extends Controller
         user::destroy($usuario->id);
         emprendimiento::destroy($id);
                 
-        return redirect('admin/emprendimiento');
+        return redirect('admin/emprendimientos');
     }
 }

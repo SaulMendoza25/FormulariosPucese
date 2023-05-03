@@ -8,6 +8,13 @@ line-height: 1.42em;
 color:black;
 background-color:white;
 }
+.section1{
+  display: flex;
+  justify-content: right;
+  margin-right: 60px;
+  margin-left: 10px;
+
+}
 .session{
   display: flex;
   justify-content: left;
@@ -18,7 +25,18 @@ background-color:white;
 .direcciones :first-child{
   justify-content: right;
 
-  
+ 
+}
+
+.form-control2 {
+  background-color: var(--text-input-field);
+  border-radius: 8px;
+  height: 30px;
+  font-size: var(--md);
+  padding: 6px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  transition: 0.2s box-shadow ease;
 }
 .enlaces{
   font-weight: bold;
@@ -32,10 +50,15 @@ background-color:white;
   line-height: 3;
   color: black;
 }
+#ok{
+  border-radius: 8px;
+
+}
 .styled-table {
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 0.9em;
+  
   font-family: sans-serif;
   min-width: 400px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -44,6 +67,7 @@ background-color:white;
   background-color: #009879;
   color: #ffffff;
   text-align: left;
+
 }
 
 .styled-table th,
@@ -95,7 +119,6 @@ color: black;
 .tables {
   text-align: left;
   overflow: hidden;
-  width: 90%;
   margin: 0 auto;
 display: table;
 padding: 0 0 8em 0;

@@ -69,6 +69,7 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Tipo de registro') }}</label>
                                 <div class="col-md-6">
                                 <select id="tipo_registro"   class="btn btn-primary">
+                                    
                                         <option value="1">Emprendimiento</option>
                                         <option value="2">Mypime</option>
                                     </select>
@@ -79,7 +80,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" id="btn" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Registrarse') }}
                                 </button>
                             </div>
                         </div>

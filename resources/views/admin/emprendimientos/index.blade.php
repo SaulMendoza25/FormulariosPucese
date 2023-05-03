@@ -11,15 +11,30 @@
 </head>
 
 <body class="body-tables">
-
+<h1>Emprendimientos</h1>
+<div class="section1">   
+<div class="form-row">
+    
+  <form action="{{route('emprendimientos.index')}}" method="get">
+    <div class="col-sm-4 my-11">
+    <input type="text" class="form-control2" name="texto" >
+    </div>
+    </div>
+    <div class="section1">   
+    <div class="col-auto my">
+        <input type="submit" class="btn btn-primary" value="Buscar">
+    </div>
+  </form>
+</div>
+</div> 
 <div class="session">  
-<a href="{{url('admin/emprendimiento/create')}}" class="enlaces">Nuevo Formulario</a>
-<a href="{{url('admin/mypime')}}" class="enlaces"  >Tabla de Mypimes</a>
+<a href="{{url('admin/emprendimientos/create')}}"  id="ok" class="enlaces">Nuevo Formulario</a>
+<a href="{{url('admin/mypime')}}"  id="ok" class="enlaces"  >Tabla de Mypimes</a>
 <div class="direcciones">
-    {!!$emprendimiento->links()!!}
+    {!!$datos->links()!!}
 </div>
 </div>  
-<table class="tables styled-table">
+<table class="tables styled-table"  id="ok">
     <thead >
         <tr>
             <th><h1>#</th>
@@ -39,7 +54,9 @@
     </thead>
 
     <tbody>
-        @foreach($emprendimiento as $value)
+
+    
+        @foreach($datos as $value)
         <tr>
             <td>{{$value->id}}</td>
             <td>{{$value->name_proyect}}</td>
@@ -52,8 +69,8 @@
             <td>{{$value->main_service}}</td>
             <td>{{$value->main_investment_source}}</td>
             <td>{{$value->principal_investment_range}}</td>
-            <td class="actions"> <a class="other-button" href="{{url('admin/emprendimiento/' .$value->id. '/edit')}}">Editar</a>  
-            <form action="{{url('admin/'.'emprendimiento/'.$value->id) }}" method="post">
+            <td class="actions"> <a class="other-button" href="{{url('admin/emprendimientos/' .$value->id. '/edit')}}">Editar</a>  
+            <form action="{{url('admin/'.'emprendimientos/'.$value->id) }}" method="post">
                     @csrf
                     {{method_field('DELETE') }}
                     <input  class="secundary-button" type="submit" onclick="return confirm('Deseas realmente borrar?')" value="Borrar">

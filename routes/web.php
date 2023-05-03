@@ -36,7 +36,7 @@ Route::group(['middleware'=>['auth','role:administrador']],
 function(){
 
     
- Route::resource('admin/emprendimiento',adminEmprendimientoControlle::class);
+ Route::resource('admin/emprendimientos',adminEmprendimientoControlle::class);
 Route::resource('admin/mypime',adminMypimeController::class);
 
 });

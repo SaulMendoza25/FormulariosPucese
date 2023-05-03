@@ -61,7 +61,7 @@ class EmprendimientoController extends Controller
 
             'start_date'=>'required',
             'end_date'=>'required',
-            'main_service'=>'required|string|max:200',
+            'main_service'=>'required|string|max:220',
         
             'main_products'=>'required|string|max:200',
             'main_investment_source'=>'required|string|max:200',

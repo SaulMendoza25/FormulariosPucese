@@ -1,25 +1,25 @@
 
 <div class="left">
   <label for="RUC">(Opcional) RUC:</label>
-  <input type="text" name="RUC" class="form-control" id="RUC"  title="Ingrese datos validos en el campo" value="{{isset($mypimes->RUC)?$mypimes->RUC:old('RUC')}}" >
+  <input type="text" name="RUC" class="form-control" id="RUC"  pattern="[0-9]{13}"  title="Ingrese datos validos en el campo" value="{{isset($mypimes->RUC)?$mypimes->RUC:old('RUC')}}" >
 
   <label for="Business_name">Razon Social:</label>
-  <input type="text" name="Business_name" class="form-control"   title="Ingrese datos validos en el campo" id="Business_name" value="{{isset($mypimes->Business_name)?$mypimes->Business_name:old('Business_name')}}">
+  <input type="text" name="Business_name" class="form-control"   pattern="[a-zA-Z1-9 ]{1,999}" title="Ingrese datos validos en el campo" id="Business_name" value="{{isset($mypimes->Business_name)?$mypimes->Business_name:old('Business_name')}}">
   @error('Business_name')
   <div class=" alert-danger">El nombre de la razon social es requerido</div>
   @enderror
   <label for="Trade_name">Nombre Comercial:</label>
-  <input type="text" name="Trade_name" class="form-control"  title="Ingrese datos validos en el campo" id="Trade_name" value="{{isset($mypimes->Trade_name)?$mypimes->Trade_name:old('Trade_name')}}">
+  <input type="text" name="Trade_name" class="form-control"  pattern="[a-zA-Z1-9 ]{1,999}" title="Ingrese datos validos en el campo" id="Trade_name" value="{{isset($mypimes->Trade_name)?$mypimes->Trade_name:old('Trade_name')}}">
   @error('Trade_name')
   <div class=" alert-danger">El nombre comercial es requerido</div>
   @enderror
   <label for="Number_of_collaborators">Numeros de Colaboradores:</label>
-  <input type="number" name="Number_of_collaborators" class="form-control" id="Number_of_collaborators" min="1" title="Ingrese datos validos en el campo"  value="{{isset($mypimes->Number_of_collaborators)?$mypimes->Number_of_collaborators:old('Number_of_collaborators')}}">
+  <input type="number" name="Number_of_collaborators" class="form-control" pattern="[1-9]+" id="Number_of_collaborators" min="1" title="Ingrese datos validos en el campo"  value="{{isset($mypimes->Number_of_collaborators)?$mypimes->Number_of_collaborators:old('Number_of_collaborators')}}">
   @error('Number_of_collaborators')
   <div class=" alert-danger">El numero de colaboradores es requerido</div>
   @enderror
   <label for="email">Correo Electronico:</label>
-  <input type="email" name="email" class="form-control" id="email"  title="Ingrese datos validos en el campo"  value="{{isset($mypimes->email)?$mypimes->email:old('email')}}" pattern=".+@globex\.com" size="30" required>
+  <input type="email" name="email" class="form-control" id="email"  title="Ingrese datos validos en el campo"  value="{{isset($mypimes->email)?$mypimes->email:old('email')}}"  size="30" required>
   @error('email')
   <div class=" alert-danger">El correo electronico es requerido</div>
   @enderror
@@ -47,24 +47,24 @@
   <label id ="labelespcialidad"  Style="display:none" for="others2">Ingrese la Especialidad</label>
   <input type="text" id="others2" name="especialidad" class="form-control" Style="display:none" value="{{isset($mypimes->especialidad)?$mypimes->especialidad:old('especialidad')}}">
   <label for="Address">Dirección:</label>
-  <input type="text" name="Address" class="form-control" id="Address" value="{{isset($mypimes->Address)?$mypimes->Address:old('Address')}}"   pattern="[a-zA-Z1-9 ]{2,999}" title="Ingrese datos validos en el campo">
+  <input type="text" name="Address" class="form-control" id="Address" value="{{isset($mypimes->Address)?$mypimes->Address:old('Address')}}"   pattern="[a-zA-Z1-9 ]{1,999}" title="Ingrese datos validos en el campo">
   @error('Address')
   <div class=" alert-danger">La Dirección es requerida</div>
   @enderror
 </div>
 <div class="right1">
   <label for="Province">Provincia:</label>
-  <input type="text" name="Province" class="form-control" id="Province" value="{{isset($mypimes->Province)?$mypimes->Province:old('Province')}}"   pattern="[a-zA-Z ]{2,999}" title="Ingrese datos validos en el campo"> 
+  <input type="text" name="Province" class="form-control" id="Province" value="{{isset($mypimes->Province)?$mypimes->Province:old('Province')}}"  pattern="[a-zA-Z0-9 ]{1,999}" title="Ingrese datos validos en el campo"> 
   @error('Province')
   <div class=" alert-danger">La provincia es requerida</div>
   @enderror
   <label for="County">Canton:</label>
-  <input type="text" name="County" class="form-control" id="County" value="{{isset($mypimes->County)?$mypimes->County:old('County')}}"   pattern="[a-zA-Z ]{2,999}" title="Ingrese datos validos en el campo">
+  <input type="text" name="County" class="form-control" id="County" value="{{isset($mypimes->County)?$mypimes->County:old('County')}}"   pattern="[a-zA-Z0-9 ]{1,999}" title="Ingrese datos validos en el campo">
   @error('County')
   <div class=" alert-danger">El Canton es requerido</div>
   @enderror
   <label for="Parish">Parroquia:</label>
-  <input type="text" name="Parish" class="form-control" id="Parish" value="{{isset($mypimes->Parish)?$mypimes->Parish:old('Parish')}}"   pattern="[a-zA-Z ]{2,999}" title="Ingrese datos validos en el campo">
+  <input type="text" name="Parish" class="form-control" id="Parish" value="{{isset($mypimes->Parish)?$mypimes->Parish:old('Parish')}}"   pattern="[a-zA-Z0-9 ]{1,999}" title="Ingrese datos validos en el campo">
   @error('Parish')
   <div class=" alert-danger">La Parroquia es requerida</div>
   @enderror
@@ -75,9 +75,12 @@
   @enderror
   <label for="Owner_Legal_representative">Titular/Representante legal:</label>
   <input type="text" name="Owner_Legal_representative" class="form-control" id="Owner_Legal_representative" value="{{isset($mypimes->Owner_Legal_representative)?$mypimes->Owner_Legal_representative:old('Owner_Legal_representative')}}"   pattern="[a-zA-Z ]{2,999}" title="Ingrese datos validos en el campo">
+  @error('Owner_Legal_representative')
+  <div class=" alert-danger">El Titular/Representante legal es requerido</div>
+  @enderror
   <label for="Gender_Representative">Genero del Representante:</label>
   <select class="combo" id="textGender" value="{{isset($mypimes->Gender_Representative)?$mypimes->Gender_Representative:old('Gender_Representative')}}">
-    <option value="{{isset($mypimes->Gender_Representative)?$mypimes->Gender_Representative:old('Gender_Representative')}}" selected disabled hidden  pattern="[a-zA-Z ]{2,999}">{{isset($mypimes->Gender_Representative)?$mypimes->Gender_Representative:old('Gender_Representative')}}</option>
+    <option value="{{isset($mypimes->Gender_Representative)?$mypimes->Gender_Representative:old('Gender_Representative')}}" selected disabled hidden  pattern="[a-zA-Z ]{1,999}">{{isset($mypimes->Gender_Representative)?$mypimes->Gender_Representative:old('Gender_Representative')}}</option>
     <option value="masculino">Masculino</option>
     <option value="femenino">Femenino</option>
   </select>
@@ -105,7 +108,7 @@
   @enderror
   <label for="Category">Categoria:</label>
   <select class="combo"   id="textCategory">
-  <option value="{{isset($mypimes->Category)?$mypimes->Category:old('Category')}}" selected disabled hidden  pattern="[a-zA-Z ]{2,999}">{{isset($mypimes->Category)?$mypimes->Category:old('Category')}}</option>
+  <option value="{{isset($mypimes->Category)?$mypimes->Category:old('Category')}}" selected disabled hidden  pattern="[a-zA-Z ]{1,999}">{{isset($mypimes->Category)?$mypimes->Category:old('Category')}}</option>
     <option value="Comercio">Comercio</option>
     <option value="Servicio">Servicio</option>
     <option value="Industrias">Industrias</option>

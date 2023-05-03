@@ -1,17 +1,17 @@
 
 <div class="left">
   <label for="name_proyect">Nombre del proyecto:</label>
-  <input type="text" name="name_proyect" class="form-control"  pattern="[a-zA-Z ]{2,999}" id="name_proyect" value="{{isset($emprendimiento->name_proyect)?$emprendimiento->name_proyect:old('name_proyect')}}">
+  <input type="text" name="name_proyect" class="form-control"  pattern="[a-zA-Z ]{1,999}" id="name_proyect" value="{{isset($emprendimiento->name_proyect)?$emprendimiento->name_proyect:old('name_proyect')}}">
   @error('name_proyect')
   <div class=" alert-danger">El nombre del proyecto es requerido</div>
   @enderror
   <label for="name_property">Nombre(s) Propietario(s):</label>
-  <input type="text" name="name_property" class="form-control"  pattern="[a-zA-Z ]{2,999}" id="name_property" value="{{isset($emprendimiento->name_property)?$emprendimiento->name_property:old('name_property')}}">
+  <input type="text" name="name_property" class="form-control"  pattern="[a-zA-Z ]{1,999}" id="name_property" value="{{isset($emprendimiento->name_property)?$emprendimiento->name_property:old('name_property')}}">
   @error('name_property')
   <div class=" alert-danger">Los Nombre(s) Propietario(s) es requerido</div>
   @enderror
   <label for="Number_of_collaborators">Correo Electronico:</label>
-  <input type="email" name="email" class="form-control" id="email"  title="Ingrese datos validos en el campo"  value="{{isset($emprendimiento->email)?$emprendimiento->email:old('email')}}" pattern=".+@globex\.com" size="30" required>
+  <input type="email" name="email" class="form-control" id="email"  title="Ingrese datos validos en el campo"  value="{{isset($emprendimiento->email)?$emprendimiento->email:old('email')}}"  size="30" required>
   @error('email')
   <div class=" alert-danger">El Correo Electronico social es requerido</div>
   @enderror
@@ -21,12 +21,12 @@
   <div class=" alert-danger">La Contraseña es requerida</div>
   @enderror
   <label for="addresses">Direccion:</label>
-  <input type="text" name="addresses" class="form-control"  pattern="[a-zA-Z1-9 ]{2,999}" id="addresses" value="{{isset($emprendimiento->addresses)?$emprendimiento->addresses:old('addresses')}}">
+  <input type="text" name="addresses" class="form-control"  pattern="[a-zA-Z0-9 ]{1,999}" id="addresses" value="{{isset($emprendimiento->addresses)?$emprendimiento->addresses:old('addresses')}}">
   @error('addresses')
   <div class=" alert-danger">El nombre de Direccion es requerido</div>
   @enderror
   <label for="phone_number">Telefono:</label>
-  <input type="text" NAME="phone_number" class="form-control" pattern="[0-9]{1,13}" id="phone_number" value="{{isset($emprendimiento->phone_number)?$emprendimiento->phone_number:old('phone_number')}}">
+  <input type="text" NAME="phone_number" class="form-control" pattern="[0-9]{10}" id="phone_number" value="{{isset($emprendimiento->phone_number)?$emprendimiento->phone_number:old('phone_number')}}">
   @error('phone_number')
   <div class=" alert-danger">El numero de Telefono es requerido</div>
   @enderror
@@ -61,7 +61,7 @@
 
   <label for="main_products">Productos Principales (JPEG/PNG):</label>
   <div class="PRP-DIV">
-    <textarea id="textproducts"   require="" pattern="[a-zA-Z1-9 ]{2,999}" class="comment" placeholder="Ingrese sus productos principales">{{isset($emprendimiento->main_products)?$emprendimiento->main_products:old('main_products')}}</textarea>
+    <textarea id="textproducts"   require="" pattern="[a-zA-Z0-9 ]{1,999}" class="comment" placeholder="Ingrese sus productos principales">{{isset($emprendimiento->main_products)?$emprendimiento->main_products:old('main_products')}}</textarea>
     <input type="hidden" name="main_products"id="main_products">
     @error('main_products')
   <div class=" alert-danger">El detalle de los Productos Principales son requeridos</div>
@@ -76,10 +76,10 @@
     <img src="{{isset($emprendimiento)?asset('storage'). '/' . $emprendimiento->up_image_main_products:old('up_image_main_products')}}" alt="">
   </div>
   <label for="main_service">Servicios Principales</label>
-  <textarea id="textservice" class="comment" require=""  pattern="[a-zA-Z ]{2,999}" placeholder="Ingrese sus servicios principales">{{isset($emprendimiento->main_service)?$emprendimiento->main_service:old('main_service')}}</textarea>
+  <textarea id="textservice" class="comment"   pattern="[a-zA-Z ]{1,999}" placeholder="Ingrese sus servicios principales">{{isset($emprendimiento->main_service)?$emprendimiento->main_service:old('main_service')}}</textarea>
   <input type="hidden" name="main_service" id="main_service">
   @error('main_service')
-  <div class=" alert-danger">Los Servicios Principales son requeridos</div>
+  <div class=" alert-danger">Los Servicios Principales son requeridos el limite es de 220 caracteres</div>
   @enderror
   <label for="main_investment_source">Fuente de Inversion Principales:</label>
   <input type="text" name="main_investment_source" class="form-control" id="main_investment_source" value="{{isset($emprendimiento->main_investment_source)?$emprendimiento->main_investment_source:old('main_investment_source')}}">
@@ -108,7 +108,7 @@
 </div>
   <div class="buttons">
   <input id="save" class="second-button" type="submit" value="{{$modo}}">
-  <a href="{{ url('admin/emprendimiento') }}" class="second-button">Volver</a>
+  <a href="{{ url('admin/emprendimientos') }}" class="second-button">Volver</a>
   </div>
 </div>
 <script src="https://form.deone.com.ec/public/js/validacionEmprendimiento.js"></script>

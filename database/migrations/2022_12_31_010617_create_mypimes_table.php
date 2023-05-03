@@ -29,13 +29,13 @@ class CreateMypimesTable extends Migration
             $table->string('Province')->nullable();
             $table->string('County')->nullable();
             $table->string('Parish')->nullable();
-            $table->integer('Contact_telephone_number')->nullable();
+            $table->string('Contact_telephone_number')->nullable();
             $table->string('Owner_Legal_representative')->nullable();
             $table->string('Gender_Representative')->nullable();
             //Actividad Comercial y Categorias
             $table->string('logo')->nullable();//Opcional
             $table->string('up_image_logo')->nullable();//Opcional 
-            $table->string('Number_of_establishments')->nullable();
+            $table->integer('Number_of_establishments')->nullable();
             $table->date('Business_start_date')->nullable();
             $table->string('Category')->nullable();
             //$table->string('producto_severcios_detalle');

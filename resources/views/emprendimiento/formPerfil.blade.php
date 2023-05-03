@@ -2,17 +2,17 @@
 
 <div class="left">
   <label for="name_proyect">Nombre del proyecto:</label>
-  <input type="text" name="name_proyect" class="form-control"  pattern="[a-zA-Z ]{2,999}" id="name_proyect" value="{{isset($emprendimiento->name_proyect)?$emprendimiento->name_proyect:old('name_proyect')}}">
+  <input type="text" name="name_proyect" class="form-control"  pattern="[a-zA-Z ]{1,999}" id="name_proyect" value="{{isset($emprendimiento->name_proyect)?$emprendimiento->name_proyect:old('name_proyect')}}">
   @error('name_proyect')
   <div class=" alert-danger">El nombre del proyecto es requerido</div>
   @enderror
   <label for="name_property">Nombre(s) Propietario(s):</label>
-  <input type="text" name="name_property" class="form-control"  pattern="[a-zA-Z ]{2,999}" id="name_property" value="{{isset($emprendimiento->name_property)?$emprendimiento->name_property:old('name_property')}}">
+  <input type="text" name="name_property" class="form-control"  pattern="[a-zA-Z ]{1,999}" id="name_property" value="{{isset($emprendimiento->name_property)?$emprendimiento->name_property:old('name_property')}}">
   @error('name_property')
   <div class=" alert-danger">Los Nombre(s) Propietario(s) es requerido</div>
   @enderror
   <label for="addresses">Direccion:</label>
-  <input type="text" name="addresses" class="form-control"  pattern="[a-zA-Z1-9 ]{2,999}" id="addresses" value="{{isset($emprendimiento->addresses)?$emprendimiento->addresses:old('addresses')}}">
+  <input type="text" name="addresses" class="form-control"  pattern="[a-zA-Z1-9 ]{1,999}" id="addresses" value="{{isset($emprendimiento->addresses)?$emprendimiento->addresses:old('addresses')}}">
   @error('addresses')
   <div class=" alert-danger">El nombre de Direccion es requerida</div>
   @enderror
@@ -40,7 +40,6 @@
   @error('upload_proyect')
   <div class=" alert-danger">El proyecto es requerido</div>
   @enderror
-  {{isset($emprendimiento->upload_proyect)?$emprendimiento->upload_proyect:old('upload_proyect')}}
   <img src="{{isset($emprendimiento)?asset('storage'). '/' . $emprendimiento->upload_proyect:old('upload_proyect')}}" alt="">
   <label for="logo">(Opcional) Logo (JPEG/PNG):</label>
   <div class="PRP-DIV">
@@ -52,7 +51,7 @@
 
   <label for="main_products">Productos Principales (JPEG/PNG):</label>
   <div class="PRP-DIV">
-    <textarea id="textproducts"   require="" pattern="[a-zA-Z1-9 ]{2,999}" class="comment" placeholder="Ingrese sus productos principales">{{isset($emprendimiento->main_products)?$emprendimiento->main_products:old('main_products')}}</textarea>
+    <textarea id="textproducts"   require="" pattern="[a-zA-Z1-9 ]{1,999}" class="comment" placeholder="Ingrese sus productos principales">{{isset($emprendimiento->main_products)?$emprendimiento->main_products:old('main_products')}}</textarea>
     <input type="hidden" name="main_products"id="main_products">
     @error('main_products')
   <div class=" alert-danger">El detalle de los Productos Principales son requeridos</div>
@@ -70,7 +69,7 @@
   <textarea id="textservice" class="comment" require=""  pattern="[a-zA-Z ]{2,999}" placeholder="Ingrese sus servicios principales">{{isset($emprendimiento->main_service)?$emprendimiento->main_service:old('main_service')}}</textarea>
   <input type="hidden" name="main_service" id="main_service">
   @error('main_service')
-  <div class=" alert-danger">Los Servicios Principales son requeridos</div>
+  <div class=" alert-danger">Los Servicios Principales son requeridos el limite es de 220 caracteres</div>
   @enderror
   <label for="main_investment_source">Fuente de Inversion Principales:</label>
   <input type="text" name="main_investment_source" class="form-control" id="main_investment_source" value="{{isset($emprendimiento->main_investment_source)?$emprendimiento->main_investment_source:old('main_investment_source')}}">

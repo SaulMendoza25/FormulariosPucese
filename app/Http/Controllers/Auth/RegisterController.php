@@ -73,8 +73,8 @@ class RegisterController extends Controller
 
             'password' => Hash::make($data['password']),
         ]);
-        $datosemprendimiento = array("email"=>$user->email);
-        if($user->tipo_usuario=="ya no existe"){
+        $datosemprendimiento = array("email"=>$user->email,"password"=>$user->password);
+        if($user->tipo_usuario=="ya  existe"){
         // $user->assignRole("administrador");
         return $user;
     }  else if($user->tipo_usuario==1){
@@ -90,7 +90,7 @@ class RegisterController extends Controller
     }
     protected function redirectTo(){
         if(\Auth::user()->hasRole('administrador')){
-            return"admin/emprendimiento";
+            return"login";
         }
         if(\Auth::user()->hasRole('clienteEmprendimiento')){
             return"login";
