@@ -15,6 +15,9 @@ background-color:white;
   margin-left: 10px;
 
 }
+.actions :first-child{
+  margin-bottom: 20px;
+}
 .session{
   display: flex;
   justify-content: left;
@@ -72,7 +75,12 @@ background-color:white;
 
 .styled-table th,
 .styled-table td {
-    padding: 12px 15px;
+    padding: 12px;
+  padding-top: 20px;
+
+}
+.styled-table td:last-child{
+  margin-bottom: 20px;
 }
 .styled-table tbody tr {
   border-bottom: 1px solid #dddddd;

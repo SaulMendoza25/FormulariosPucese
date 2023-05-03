@@ -67,7 +67,6 @@ class MypimesController extends Controller
 
             'Coordinatesx'=>'required',
             'Coordinatesy'=>'required',
-            'image'=>'required',
 
 
             
@@ -90,7 +89,6 @@ class MypimesController extends Controller
               'Products_or_services_details.required'=>'Productos de servicios es requerido',
               'Coordinatesx.required'=>'La coodernada x es requerida',
               'Coordinatesy.required'=>'La coordenada y es requerida',
-              'image.required'=>'La imagen es requerida',
         ];
         $this->validate($request,$campos,$mensaje);
         $datosmipymes = request()->except(['_token','_method']);

@@ -101,7 +101,7 @@
   <img src="{{isset($emprendimiento)?asset('storage'). '/' . $emprendimiento->up_image_main_mark:old('up_image_main_mark')}}" alt="">
   <label for="number_employees">Numero de Empleados:</label>
   <div>
-  <input type="number" name="number_employees" min="1" max="100000" class="form-control" id="number_employees" value="{{isset($emprendimiento->number_employees)?$emprendimiento->number_employees:old('number_employees')}}">
+  <input type="number" name="number_employees" min="1" max="10000000000" class="form-control" id="number_employees" value="{{isset($emprendimiento->number_employees)?$emprendimiento->number_employees:old('number_employees')}}">
   @error('number_employees')
   <div class=" alert-danger">El numero de empleado  es requerido</div>
   @enderror  

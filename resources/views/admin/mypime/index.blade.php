@@ -33,7 +33,7 @@
 </div>
 
 </div>  
-
+<!-- <p>El numero de mypimes es de {{count($datos)}}</p> -->
 <table class="tables styled-table" id="ok">
     <thead >
         <tr>
@@ -69,11 +69,11 @@
             <td>{{$value->Category}}</td>
          
             <td>{{$value->social_media}}</td>
-            <td class="actions"> <a class="other-button" href="{{url('admin/mypime/' .$value->id. '/edit')}}">Editar</a>  
+            <td class="actions"> <a class="btn btn-primary" href="{{url('admin/mypime/' .$value->id. '/edit')}}">Editar</a>  
             <form action="{{url('admin/mypime/'.$value->id) }}" method="post">
                     @csrf
                     {{method_field('DELETE') }}
-                    <input  class="secundary-button" type="submit" onclick="return confirm('Deseas realmente borrar?')" value="Borrar">
+                    <input  class="btn btn-danger" type="submit" onclick="return confirm('Deseas realmente borrar?')" value="Borrar">
                 </form>
             </td>
         </tr>

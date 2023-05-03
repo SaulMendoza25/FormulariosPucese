@@ -32,8 +32,10 @@
 <a href="{{url('admin/mypime')}}"  id="ok" class="enlaces"  >Tabla de Mypimes</a>
 <div class="direcciones">
     {!!$datos->links()!!}
+   
 </div>
 </div>  
+<!-- <p>El numero de emprendimiento es de {{$contar}}</p> -->
 <table class="tables styled-table"  id="ok">
     <thead >
         <tr>
@@ -48,6 +50,8 @@
             <th><h1>Servicios Principales</h1></th>
             <th><h1>Fuente de Inversion Principal</h1></th>
             <th><h1>Rango de Inversion Principal</h1></th>
+            <th><h1>Proyecto PDF</h1></th>
+
             <th><h1>Acciones</h1></th>
         </tr>
 
@@ -69,11 +73,14 @@
             <td>{{$value->main_service}}</td>
             <td>{{$value->main_investment_source}}</td>
             <td>{{$value->principal_investment_range}}</td>
-            <td class="actions"> <a class="other-button" href="{{url('admin/emprendimientos/' .$value->id. '/edit')}}">Editar</a>  
+            <td>  <form action="https://form.deone.com.ec/public/storage/{{$value->upload_proyect}}">
+            <button class="btn btn-primary">Abrir</button></form></td>
+            <td class="actions"> <a class="btn btn-primary" href="{{url('admin/emprendimientos/' .$value->id. '/edit')}}">Editar</a>  
+               
             <form action="{{url('admin/'.'emprendimientos/'.$value->id) }}" method="post">
                     @csrf
                     {{method_field('DELETE') }}
-                    <input  class="secundary-button" type="submit" onclick="return confirm('Deseas realmente borrar?')" value="Borrar">
+                    <input  class="btn btn-danger" type="submit" onclick="return confirm('Deseas realmente borrar?')" value="Borrar">
                 </form>
             </td>
         </tr>

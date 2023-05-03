@@ -20,17 +20,22 @@ class adminEmprendimientoControlle extends Controller
     public function index(Request $request)
     {
         $texto=trim($request->get('texto'));
+       
         // $datos['mypime'] = mypimes::paginate(5);
         $datos=DB::table('emprendimientos')
         ->select('*')->where('email','LIKE', '%' . $texto . '%')
         ->orWhere('name_proyect','LIKE', '%' . $texto . '%')
+        ->orWhere('name_property','LIKE', '%' . $texto . '%')
         ->orWhere('addresses','LIKE', '%' . $texto . '%')
+        ->orWhere('main_investment_source','LIKE', '%' . $texto . '%')
+        ->orWhere('main_service','LIKE', '%' . $texto . '%')
+
         ->orWhere('phone_number','LIKE', '%' . $texto . '%')
         ->orWhere('main_products','LIKE', '%' . $texto . '%')
         ->orWhere('main_service','LIKE', '%' . $texto . '%')
         ->paginate(5);
-        return view('admin/emprendimientos.index',  compact('datos'));
-
+        $contar=$datos->count();
+        return view('admin/emprendimientos.index',  compact('datos','contar','texto'));
     }
 
     /**

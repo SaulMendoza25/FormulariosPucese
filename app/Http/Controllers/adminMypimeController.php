@@ -31,6 +31,8 @@ class adminMypimeController extends Controller
         ->orWhere('Contact_telephone_number','LIKE', '%' . $texto . '%')
         ->orWhere('Trade_name','LIKE', '%' . $texto . '%')
         ->paginate(5);
+        $contar=$datos->count();
+
         return view('admin/mypime.index',  compact('datos'));
     }
 
@@ -73,8 +75,8 @@ class adminMypimeController extends Controller
             'Category'=>'required|string',
             'Products_or_services_details'=>'required|string',
 
-            'Coordinates_x'=>'required',
-            'Coordinates_y'=>'required',
+            'Coordinatesx'=>'required',
+            'Coordinatesy'=>'required',
             'image'=>'required',
 
 
@@ -98,8 +100,8 @@ class adminMypimeController extends Controller
               'Business_start_date.required'=>'El fecha de inicio del negocio es requerido',
               'Category.required'=>'La categoria es requerido',
               'Products_or_services_details.required'=>'Productos de servicios es requerido',
-              'Coordinates_x.required'=>'La coodernada x es requerida',
-              'Coordinates_y.required'=>'La coordenada y es requerida',
+              'Coordinatesx.required'=>'La coodernada x es requerida',
+              'Coordinatesy.required'=>'La coordenada y es requerida',
               'image.required'=>'La imagen es requerida',
         ];
         $this->validate($request,$campos,$mensaje);
